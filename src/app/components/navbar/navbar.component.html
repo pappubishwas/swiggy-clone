@@ -1,0 +1,59 @@
+<section class="bg-white text-gray-600 shadow-md">
+    <div class="container mx-auto flex items-center justify-between px-4">
+      <!-- Logo -->
+      <div class="logo font-bold m-5">
+        <img
+          src="assets/Swiggylogo.png"
+          alt="Logo"
+          class="h-14 bg-custom-orange rounded-xl"
+        />
+      </div>
+  
+      <!-- Navbar List -->
+      <div class="hidden font-bold text-xl md:flex space-x-8">
+        <div class="cursor-pointer mt-2">
+          <i class="fa-solid fa-briefcase pr-5"></i>Swiggy Corporates
+        </div>
+        <div>
+          <button
+            class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
+          >
+            <i class="fa-solid fa-magnifying-glass mr-3"></i><span>Search</span>
+          </button>
+        </div>
+        <div>
+          <button
+            class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
+          >
+            <i class="fa-solid fa-percent mr-3"></i><span>Offers</span>
+          </button>
+        </div>
+        <div>
+          <button
+            class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
+          >
+            <i class="fa-regular fa-life-ring mr-3"></i><span>Help</span>
+          </button>
+        </div>
+        <div (click)="redirectToHome()">
+              <button class=" text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition">
+                  <i class="fa-solid fa-user mr-3"></i><span>Sign in</span>
+                </button>
+          </div>
+        <div class="get-app">
+          <button
+            class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
+          >
+            <i class="fa-solid fa-cart-shopping mr-3"></i><span>Cart</span>
+          </button>
+        </div>
+      </div>
+  
+      <!-- Mobile Menu Toggle -->
+      <div class="md:hidden">
+        <button class="text-gray-700">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </section>

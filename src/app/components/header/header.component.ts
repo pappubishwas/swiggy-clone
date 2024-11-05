@@ -1,39 +1,40 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']  // Corrected to styleUrls
 })
 export class HeaderComponent {
   loggedIn = false;
-  @Output() loginToggle = new EventEmitter<void>();
+
+  @Output() loginToggle = new EventEmitter<void>(); // Defined loginToggle output
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit() {
+    this.authService.isLoggedIn$.subscribe(status => {
+      this.loggedIn = status;
+    });
+  }
+
   toggleLoginLogout() {
     if (this.loggedIn) {
-      // Perform logout actions
-      this.loggedIn = false;
+      this.authService.setLoggedIn(false); // Set to logged out
       alert("You have been logged out.");
     } else {
-      // Trigger the login modal or sidebar open action
       this.openLoginSidebar();
     }
   }
 
   openLoginSidebar() {
-    // Logic to open the login sidebar component
-    this.loginToggle.emit();
+    this.loginToggle.emit(); // Emit event to open the login sidebar
   }
 
   onUserLoggedIn() {
     this.loggedIn = true;
   }
-
-
-
-  // toggleLogin() {
-  //   // Emit the event to notify the parent component
-  //   this.loginToggle.emit();
-  // }
 }
