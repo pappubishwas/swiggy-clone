@@ -1,0 +1,46 @@
+
+  .section-title {
+    font-weight: bold;
+    font-size: 1.25rem; 
+  }
+  
+  .section-list {
+    color: #4A5568; 
+  }
+  
+  .section-list li {
+    padding: 4px 0;
+    font-size: 16px;
+  }
+  
+  .show-more-btn {
+    font-size: 14px;
+    color: #4A5568; 
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+  
+  .show-more-btn i {
+    transition: transform 0.3s;
+  }
+  
+  .show-more-btn i.fa-chevron-up {
+    transform: rotate(180deg);
+  }
+  
+  .social-icons i {
+    margin-right: 8px;
+    color: #4A5568; /* text-gray-500 */
+    font-size: 1.25rem;
+  }
+  
+
+  hr {
+    border: none;
+    height: 1px; /* Adjust thickness */
+    background-color: black; /* Change color to black */
+    margin: 16px 50px; /* Add some vertical spacing */
+  }
+  

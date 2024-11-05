@@ -1,0 +1,81 @@
+<section class="ml-24 py-10 space-y-3">
+    <!-- Arrow Buttons -->
+    <div class="arrow-button space-x-2 ml-5">
+        <button 
+            (click)="moveLeft()" 
+            [disabled]="currentIndex === 0" 
+            class="bg-custom-gray p-5 rounded-full disabled:opacity-50 disabled:cursor-not-allowed">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <button 
+            (click)="moveRight()" 
+            [disabled]="currentIndex + visibleImages >= images.length" 
+            class="bg-custom-gray p-5 rounded-full disabled:opacity-50 disabled:cursor-not-allowed">
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <!-- Section Title -->
+    <div>
+        <h4 class="font-bold text-5xl ml-5">Order our best food options</h4>
+    </div>
+
+    <!-- Card Container -->
+    <div class="card-div overflow-hidden w-5/8 mr-20"> 
+        <div 
+            class="card-list flex transition-transform duration-300 ease-in-out" 
+            [ngStyle]="{'transform': 'translateX(' + (-currentIndex * 268.5) + 'px)'}"> 
+            <div class="menu flex-shrink-0 w-1/4" *ngFor="let img of images">
+                <button>
+                    <img [src]="img" alt="Menu image" class="w-full h-auto rounded-lg">
+                </button>
+            </div>
+        </div>
+        <div 
+            class="card-list flex transition-transform duration-300 ease-in-out" 
+            [ngStyle]="{'transform': 'translateX(' + (-currentIndex * 268.5) + 'px)'}"> 
+            <div class="menu flex-shrink-0 w-1/4" *ngFor="let img of images2">
+                <button>
+                    <img [src]="img" alt="Menu image" class="w-full h-auto rounded-lg">
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ml-24 py-10 space-y-3 mt-20">
+    <!-- Arrow Buttons -->
+    <div class="arrow-button space-x-2 ml-5">
+        <button 
+            (click)="moveLeftGroceries()" 
+            [disabled]="groceriesCurrentIndex === 0" 
+            class="bg-custom-gray p-5 rounded-full disabled:opacity-50 disabled:cursor-not-allowed">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <button 
+            (click)="moveRightGroceries()" 
+            [disabled]="groceriesCurrentIndex + visibleImages >= groceries.length" 
+            class="bg-custom-gray p-5 rounded-full disabled:opacity-50 disabled:cursor-not-allowed">
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <!-- Section Title -->
+    <div>
+        <h4 class="font-bold text-5xl ml-5 py-5">Shop groceries on Instamart</h4>
+    </div>
+
+    <!-- Card Container -->
+    <div class="card-div overflow-hidden w-5/8 mr-20"> 
+
+        <div 
+            class="card-list flex transition-transform duration-300 ease-in-out" 
+            [ngStyle]="{'transform': 'translateX(' + (-groceriesCurrentIndex * 232) + 'px)'}"> 
+            <div class="menu flex-shrink-0 w-1/5 mr-10" *ngFor="let img of groceries">
+                <button>
+                    <img [src]="img" alt="Menu image" class="w-full h-auto rounded-lg">
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,88 @@
+<section class="bg-gray-100 py-10">
+    <div class="flex flex-row mx-48 space-x-6 justify-between items-start font-semibold">
+      <div>
+        <img src="https://media-assets.swiggy.com/portal/testing/seo-home/Group.svg" alt="">
+        <p>&copy;2024 Swiggy Limited</p>
+      </div>
+  
+      <!-- Company Section -->
+      <div class="section-container">
+        <h1 class="section-title">Company</h1>
+        <ul class="section-list">
+          <li>About Us</li>
+          <li>Swiggy Corporate</li>
+          <li>Careers</li>
+          <li>Team</li>
+          <li>Swiggy One</li>
+          <li>Swiggy Instamart</li>
+          <li>Swiggy Dineout</li>
+          <li>Swiggy Genie</li>
+          <li>Minis</li>
+        </ul>
+      </div>
+  
+      <!-- Contact Us and Legal Section -->
+      <div class="section-container">
+        <div class="mb-14">
+          <h1 class="section-title">Contact us</h1>
+          <ul class="section-list">
+            <li>Help & Support</li>
+            <li>Partner With Us</li>
+            <li>Rate With Us</li>
+          </ul>
+        </div>
+        <div>
+          <h1 class="section-title">Legal</h1>
+          <ul class="section-list">
+            <li>Help & Support</li>
+            <li>Partner With Us</li>
+            <li>Rate With Us</li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Cities Section with Show More Functionality -->
+      <div class="section-container">
+        <h1 class="section-title">Available in:</h1>
+        <ul class="section-list">
+          <li *ngFor="let city of displayedCities" class="city-item">{{ city.name }}</li>
+        </ul>
+        <button (click)="toggleShowMore()" class="show-more-btn">
+          {{ showAll ? 'Show Less' : 'Show More' }}
+          <i [class]="showAll ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
+        </button>
+      </div>
+  
+      <!-- Life at Swiggy and Social Links Section -->
+      <div class="section-container">
+        <div class="mb-14">
+          <h1 class="section-title">Life at Swiggy</h1>
+          <ul class="section-list">
+            <li>Explore With Swiggy</li>
+            <li>Swiggy News</li>
+            <li>Snackables</li>
+          </ul>
+        </div>
+        <div>
+          <h1 class="section-title my-3">Social Links</h1>
+          <div class="social-icons space-x-3">
+            <i class="fa-brands fa-linkedin"></i>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-pinterest"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="flex flex-row justify-between mx-36 mt-10 items-center">
+        <div class="font-bold text-xl">For Better Experience, download the swiggy app</div>
+        <div class="flex flex-row justify-center">
+            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_200,h_65/icon-AppStore_lg30tv" alt="">
+            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_200,h_65/icon-GooglePlay_1_zixjxl" alt="">
+        </div>
+    </div>
+  </section>
+
+  
