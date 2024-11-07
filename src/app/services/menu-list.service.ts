@@ -584,6 +584,7 @@ getRestaurantByName(name: string) {
       ...restaurant,
       items: restaurant.items.map(item => ({
         ...item,
+        quantity:0,
         isFavorite: false // Set isFavorite to false for each item
       }))
     };

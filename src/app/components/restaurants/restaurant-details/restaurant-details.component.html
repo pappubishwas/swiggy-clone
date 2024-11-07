@@ -66,13 +66,30 @@
             alt="{{ item.itemName }}"
             class="w-full h-auto object-cover rounded-lg"
           />
+        
+          <!-- "Add" button shown only when quantity is 0 -->
           <button
+            *ngIf="item.quantity === 0"
             (click)="addItemToCart(item)"
             class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white px-4 py-1 rounded-lg hover:bg-orange-600"
           >
             Add
           </button>
+        
+          <!-- Quantity controls shown only when quantity is greater than 0 -->
+          <div *ngIf="item.quantity > 0" class="flex items-center space-x-4 mt-5 font-bold">
+            <button (click)="decreaseQuantity(item)">
+              <i class="fa-solid fa-minus"></i>
+            </button>
+            <p class="text-2xl">{{ item.quantity }}</p>
+            <button (click)="increaseQuantity(item)">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
         </div>
+        
+
+
       </div>
 
       <!-- Horizontal line to separate each card -->
