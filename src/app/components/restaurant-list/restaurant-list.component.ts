@@ -2,13 +2,13 @@ import { NgClass, NgFor, NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-restaurant-card',
+  selector: 'app-restaurant-list',
   standalone: true,
   imports: [NgStyle, NgFor,NgClass],
-  templateUrl: './restaurant-card.component.html',
-  styleUrl: './restaurant-card.component.css',
+  templateUrl: './restaurant-list.component.html',
+  styleUrl: './restaurant-list.component.css'
 })
-export class RestaurantCardComponent {
+export class RestaurantListComponent {
   currentIndex = 0;           // Tracks the current visible card index
   visibleImages = 3;           // Number of images visible at a time
   restaurants = [

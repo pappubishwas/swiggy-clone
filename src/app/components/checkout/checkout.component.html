@@ -51,50 +51,26 @@
     <div class="font-semibold text-gray-500 text-xl text-center"><p>You can go to home page to view more restaurants</p></div>
   </div>
   <div class=" justify-center items-center font-bold text-2xl">
-    <button class="bg-custom-orange uppercase text-white px-6 py-3 rounded-lg">See restaurants near you</button>
+    <button (click)="redirectToRestaurant()" class="bg-custom-orange uppercase text-white px-6 py-3 rounded-lg">See restaurants near you</button>
   </div>
 </section>
 
 
 
-<!-- <section class="mt-10">
-    <div class=" bg-custom-orange w-48">
-        <h1>Card Empty</h1>
-        <p>Good food is always cooking! Go ahead, order some yummy items from the menu.</p>
-    </div>
-</section> -->
-
-<!-- <div class="mx-32">
-  <h1 class="font-bold text-4xl pt-14">Your Cart</h1>
-  <div *ngFor="let cartItem of cartItems" class="py-10">
-    <h2 class="font-bold text-2xl">{{ cartItem?.restaurantName }}</h2>
-    <p class="text-lg">{{ cartItem?.restaurantLocation }}</p>
-    <div class="flex justify-between items-center mt-4">
-      <div>
-        <h3 class="text-xl font-semibold">{{ cartItem?.item?.itemName }}</h3>
-        <p class="text-lg">Price: ₹{{ cartItem.item.price }}</p>
-        <p class="text-sm text-gray-600">{{ cartItem?.item?.description }}</p>
-        <p>Quantity: {{ cartItem?.quantity }}</p>
-      </div>
-    </div>
-  </div>
-  <button (click)="clearCart()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg">Clear Cart</button>
-</div> -->
-
-
-
-<div *ngIf="cartItems.length > 0; else emptyCart" class=" flex flex-row mt-10 mx-40 justify-center items-center">
+<div *ngIf="cartItems && cartItems.length > 0" class="flex flex-row mt-10 mx-40 justify-center items-center">
   <div class="justify-center items-center flex flex-col">
     <div *ngFor="let cartItem of cartItems">
-      <div class="mb-10"><h2 class="font-bold text-4xl">Your Added Items on {{cartItem.name}} </h2></div>
+      <div class="mb-10">
+        <h2 class="font-bold text-4xl">Your Added Items from {{ cartItem.name }}</h2>
+      </div>
       <div *ngIf="cartItem">
         <div class="flex space-x-4">
-          <div class=" w-2/6  rounded-lg">
-            <img [src]="cartItem.imgUrl" alt="{{cartItem.name}}" class=" rounded-xl h-5/6">
+          <div class="w-2/6 rounded-lg">
+            <img [src]="cartItem.imgUrl"  alt="{{ cartItem.name }}" class="rounded-xl h-5/6">
           </div>
           <div class="font-semibold mt-20 space-y-4">
-            <h1 class="font-bold text-5xl"> {{cartItem.name }} </h1>
-            <h3 class="text-2xl text-gray-500">{{cartItem.location}}</h3>
+            <h1 class="font-bold text-5xl">{{ cartItem.name }}</h1>
+            <h3 class="text-2xl text-gray-500">{{ cartItem.location }}</h3>
           </div>
         </div>
         <hr class="h-1/6 border bg-gray-500 mt-5">
@@ -104,17 +80,26 @@
             <div class="flex justify-center items-center">
               <div class="flex space-y-4 justify-center items-center w-4/6">
                 <div class="w-2/6">
-                  <img [src]="item.imgUrl" alt="{{item.name}}">
+                  <img [src]="item.imgUrl" alt="{{ item.itemName }}">
                 </div>
                 <div class="font-semibold">
-                  <h1 class="font-bold text-3xl"> {{item.itemName }} </h1>
-                  <h3 class="text-lg text-gray-500">{{item.description}}</h3>
+                  <h1 class="font-bold text-3xl">{{ item.itemName }}</h1>
+                  <h3 class="text-lg text-gray-500">{{ item.description }}</h3>
                 </div>
               </div>
-              <div class=" text-end w-2/6">
-                <h3 class="font-bold text-2xl">Price: {{item.price | currency:'INR'}}</h3>
-                <h5 class="font-semibold text-lg">Qty:{{item.quantity}} </h5>
+              <div class="flex flex-col text-end justify-end items-end w-2/6">
+                <h3 class="font-bold text-2xl mb-4">Price: {{ item.price | currency:'INR' }}</h3>
+                <div *ngIf="item.quantity > 0" class="flex items-center space-x-4 mt-auto font-bold">
+                  <button (click)="decreaseQuantity(item)">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <p class="text-2xl">{{ item.quantity }}</p>
+                  <button (click)="increaseQuantity(item)">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
               </div>
+              
             </div>
           </div>
         </div>
@@ -130,13 +115,13 @@
         <p> Extra Charges May Apply</p>
       </div>
       <div class="mt-5 bg-custom-orange text-center rounded-lg">
-        <button (click)="placeOrder()" class="font-bold text-3xl p-3 px-3">Place The  Order</button>
+        <button (click)="placeOrder()" class="font-bold text-3xl p-3 px-3">Place The Order</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Empty Cart Message -->
-<ng-template #emptyCart>
-  <p>Your cart is empty.</p>
-</ng-template>
+
+
+
+<app-popup #popup></app-popup>

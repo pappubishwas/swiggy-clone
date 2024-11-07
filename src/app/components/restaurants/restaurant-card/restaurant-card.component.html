@@ -1,0 +1,34 @@
+<div
+class="border flex flex-col w-full h-auto space-y-3"
+(click)="redirectRestaurantDetailsPage(restaurant.name)"
+>
+<!-- Restaurant Card -->
+<div
+  class="card-div flex flex-col w-full h-72 p-4 rounded-lg shadow-lg bg-cover bg-no-repeat bg-center text-white relative"
+  [style.background-image]="'url(' + restaurant.imageUrl + ')'"
+>
+  <div
+    class="absolute inset-0 rounded-lg bg-gradient-to-t from-black/50 to-transparent"
+  ></div>
+  <h3 class="font-bold text-3xl absolute bottom-4 left-4 z-10 uppercase">
+    {{ restaurant.offer }}
+  </h3>
+</div>
+
+<!-- Restaurant Info -->
+<div class="info flex flex-col font-bold text-gray-500 px-2">
+  <h1 class="text-lg text-gray-800">{{ restaurant.name }}</h1>
+  <div class="flex items-center text-xl text-green-500">
+    <i class="fa-solid fa-star mr-1"></i>
+    <span>{{ restaurant.rating }}</span> •
+    <span class="ml-2">{{ restaurant.deliveryTime }}</span>
+  </div>
+</div>
+
+<!-- Cuisine and Location Info -->
+<div class="details flex flex-col font-bold text-gray-500 px-2">
+  <h5 class="text-gray-600">{{ restaurant.cuisine }}</h5>
+  <h5 class="text-gray-600">{{ restaurant.location }}</h5>
+</div>
+</div>
+  

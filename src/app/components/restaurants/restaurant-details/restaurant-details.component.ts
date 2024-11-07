@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { MenuListService } from '../../../services/menu-list.service';
@@ -13,11 +13,12 @@ import { PopupComponent } from '../../popup/popup.component';
   styleUrls: ['./restaurant-details.component.css'],
 })
 export class RestaurantDetailsComponent implements OnInit {
+  
+  @ViewChild('popup') popup!: PopupComponent;
   restaurantName: string | null = '';
   quantity = 0;
   isFavorite = false;
-  restaurantItem:
-    | {
+  restaurantItem: {
         resId: string;
         imageUrl: string;
         offer: string;
@@ -40,7 +41,8 @@ export class RestaurantDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private restaurantItems: MenuListService
+    private restaurantItems: MenuListService,
+    private cdr:ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
@@ -51,29 +53,26 @@ export class RestaurantDetailsComponent implements OnInit {
       );
 
       if (this.restaurantItem) {
-        // Initialize each item's quantity to 0
-        // this.restaurantItem.items = this.restaurantItem.items.map((item) => ({
-        //   ...item,
-        // }));
+
         this.checkIfCart();
         this.checkIfFavorite();
       }
     });
   }
 
-  @ViewChild('popup') popup!: PopupComponent;
-
   displayMessage(message: string) {
     this.popup.show(message);
   }
 
+
+  
+
   addItemToCart(item: any) {
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
     let restaurantInCart = cart.find(
-      (cartRestaurant: any) =>
-        cartRestaurant.resId === this.restaurantItem?.resId
+      (cartRestaurant: any) => cartRestaurant.resId === this.restaurantItem?.resId
     );
-
+  
     if (restaurantInCart) {
       const existingItem = restaurantInCart.items.find(
         (cartItem: any) => cartItem.itemId === item.itemId
@@ -84,31 +83,92 @@ export class RestaurantDetailsComponent implements OnInit {
         restaurantInCart.items.push({ ...item, quantity: 1 });
       }
     } else {
+      // If cart already has another restaurant, clear it
       cart = [];
       cart.push({
         resId: this.restaurantItem?.resId,
         name: this.restaurantItem?.name,
         imgUrl: this.restaurantItem?.imageUrl,
         location: this.restaurantItem?.location,
+        offer: this.restaurantItem?.offer,
+        rating: this.restaurantItem?.rating,
+        deliveryTime: this.restaurantItem?.deliveryTime,
+        coisine: this.restaurantItem?.cuisine,
         items: [{ ...item, quantity: 1 }],
       });
     }
-
-    // Set quantity for the individual item and update cart in local storage
-    item.quantity = 1;
+  
+    // Update restaurantItem's quantity for the item
+    const restaurantItemIndex = this.restaurantItem?.items.findIndex(
+      (resItem) => resItem.itemId === item.itemId
+    );
+    if (restaurantItemIndex !== -1 && this.restaurantItem) {
+      this.restaurantItem.items[restaurantItemIndex!].quantity = 1;
+    }
+  
     localStorage.setItem('cart', JSON.stringify(cart));
     this.displayMessage('Item added to cart!');
+    this.cdr.detectChanges();
   }
-
+  
   increaseQuantity(item: any) {
-    item.quantity++;
-  }
-
-  decreaseQuantity(item: any) {
-    if (item.quantity > 0) {
-      item.quantity--;
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const restaurantInCart = cart.find(
+      (cartRestaurant: any) => cartRestaurant.resId === this.restaurantItem?.resId
+    );
+  
+    if (restaurantInCart) {
+      const existingItem = restaurantInCart.items.find(
+        (cartItem: any) => cartItem.itemId === item.itemId
+      );
+      if (existingItem) {
+        existingItem.quantity += 1;
+        localStorage.setItem('cart', JSON.stringify(cart));
+  
+        // Update restaurantItem's quantity for the item
+        const restaurantItemIndex = this.restaurantItem?.items.findIndex(
+          (resItem) => resItem.itemId === item.itemId
+        );
+        if (restaurantItemIndex !== -1 && this.restaurantItem) {
+          this.restaurantItem.items[restaurantItemIndex!].quantity = existingItem.quantity;
+        }
+      }
     }
+    this.cdr.detectChanges();
   }
+  
+  decreaseQuantity(item: any) {
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const restaurantInCart = cart.find(
+      (cartRestaurant: any) => cartRestaurant.resId === this.restaurantItem?.resId
+    );
+  
+    if (restaurantInCart) {
+      const existingItem = restaurantInCart.items.find(
+        (cartItem: any) => cartItem.itemId === item.itemId
+      );
+      if (existingItem && existingItem.quantity > 0) {
+        existingItem.quantity -= 1;
+        if (existingItem.quantity === 0) {
+          // Optionally, remove the item from the cart if quantity reaches zero
+          restaurantInCart.items = restaurantInCart.items.filter(
+            (cartItem: any) => cartItem.itemId !== item.itemId
+          );
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+  
+        // Update restaurantItem's quantity for the item
+        const restaurantItemIndex = this.restaurantItem?.items.findIndex(
+          (resItem) => resItem.itemId === item.itemId
+        );
+        if (restaurantItemIndex !== -1 && this.restaurantItem) {
+          this.restaurantItem.items[restaurantItemIndex!].quantity = existingItem.quantity;
+        }
+      }
+    }
+    this.cdr.detectChanges();
+  }
+  
 
 
   checkIfCart() {
