@@ -148,6 +148,7 @@ getRestaurantCards() {
 
 restaurantWithItems = [
   {
+    resId:'0',
     imageUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/10/24/a515c573-f6bd-48bc-99b3-cda9edeb1ac4_559248.JPG',
     offer: '₹125 off above ₹1199',
     name: "Domino's Pizza",
@@ -157,30 +158,35 @@ restaurantWithItems = [
     location: 'Saheed Nagar',
     items: [
       {
+        itemId:'0',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Pizza.png',
         itemName: 'Margherita Pizza',
         price: 249,
         description: 'Classic cheese pizza with a fresh tomato base and herbs.'
       },
       {
+        itemId:'1',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Biryani.png',
         itemName: 'Chicken Supreme Pizza',
         price: 369,
         description: 'Loaded with tender chicken, bell peppers, and mozzarella.'
       },
       {
+        itemId:'2',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Ice%20Cream.png',
         itemName: 'Chocolate Lava Cake',
         price: 99,
         description: 'Molten chocolate cake served warm with a gooey center.'
       },
       {
+        itemId:'3',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Dosa.png',
         itemName: 'Garlic Breadsticks',
         price: 119,
         description: 'Freshly baked breadsticks brushed with garlic butter.'
       },
       {
+        itemId:'4',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Noodles.png',
         itemName: 'Tandoori Paneer Pizza',
         price: 299,
@@ -189,6 +195,7 @@ restaurantWithItems = [
     ]
   },
   {
+    resId:'1',
     imageUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/7/17/53d5f5b4-1e37-4855-8f11-aa5ef1d12d47_408185.jpg',
     offer: '₹100 off above ₹999',
     name: 'Pizza Hut',
@@ -198,30 +205,35 @@ restaurantWithItems = [
     location: 'MG Road',
     items: [
       {
+        itemId:'0',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Pizza.png',
         itemName: 'Pepperoni Feast',
         price: 399,
         description: 'Classic pepperoni slices on a cheese and tomato base.'
       },
       {
+        itemId:'1',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Burger.png',
         itemName: 'Stuffed Garlic Bread',
         price: 139,
         description: 'Soft garlic bread stuffed with cheese and herbs.'
       },
       {
+        itemId:'2',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Shawarma.png',
         itemName: 'Chicken Tikka Pizza',
         price: 349,
         description: 'Flavorful tikka-marinated chicken on a cheesy crust.'
       },
       {
+        itemId:'3',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Cake.png',
         itemName: 'Chocolate Mousse',
         price: 99,
         description: 'Rich chocolate mousse with a creamy texture.'
       },
       {
+        itemId:'4',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/South%20Indian.png',
         itemName: 'Veggie Delight',
         price: 289,
@@ -230,6 +242,7 @@ restaurantWithItems = [
     ]
   },
   {
+    resId:'2',
     imageUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/11/5/db2f458b-9036-4826-9dc1-bcd9c758ff80_75280.JPG',
     offer: 'Free delivery above ₹799',
     name: 'Burger King',
@@ -239,30 +252,35 @@ restaurantWithItems = [
     location: 'Park Street',
     items: [
       {
+        itemId:'0',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Burger.png',
         itemName: 'Whopper',
         price: 199,
         description: 'Signature Whopper with flame-grilled patty, lettuce, and mayo.'
       },
       {
+        itemId:'1',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Noodles.png',
         itemName: 'Cheesy Fries',
         price: 79,
         description: 'Crispy fries topped with melted cheese.'
       },
       {
+        itemId:'2',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Rolls.png',
         itemName: 'Chicken Nuggets',
         price: 149,
         description: 'Juicy chicken nuggets served with a side of ketchup.'
       },
       {
+        itemId:'3',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Ice%20Cream.png',
         itemName: 'Vanilla Shake',
         price: 99,
         description: 'Thick and creamy vanilla shake topped with whipped cream.'
       },
       {
+        itemId:'4',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Dosa.png',
         itemName: 'Spicy Chicken Burger',
         price: 249,
@@ -271,6 +289,7 @@ restaurantWithItems = [
     ]
   },
   {
+    resId:'3',
     imageUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/7/17/53d5f5b4-1e37-4855-8f11-aa5ef1d12d47_408185.jpg',
     offer: '₹50 off above ₹299',
     name: 'Subway',
@@ -280,30 +299,35 @@ restaurantWithItems = [
     location: 'Downtown',
     items: [
       {
+        itemId:'0',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Noodles.png',
         itemName: 'Veggie Delight Sub',
         price: 179,
         description: 'Fresh veggie sub with tomatoes, cucumbers, and lettuce.'
       },
       {
+        itemId:'1',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Kebab.png',
         itemName: 'Chicken Teriyaki Sub',
         price: 229,
         description: 'Sweet teriyaki-glazed chicken with fresh veggies.'
       },
       {
+        itemId:'2',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Rolls.png',
         itemName: 'Turkey Breast Sub',
         price: 239,
         description: 'Lean turkey breast with fresh toppings and your choice of sauce.'
       },
       {
+        itemId:'3',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Ice%20Cream.png',
         itemName: 'Choco Chip Cookie',
         price: 50,
         description: 'Classic cookie with chocolate chips baked to perfection.'
       },
       {
+        itemId:'4',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Cake.png',
         itemName: 'Double Chocolate Cookie',
         price: 50,
@@ -313,6 +337,7 @@ restaurantWithItems = [
   },
 
   {
+    resId:'4',
     imageUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/10/24/a515c573-f6bd-48bc-99b3-cda9edeb1ac4_559248.JPG',
     offer: '₹125 off above ₹1199',
     name: "KFC",
@@ -322,30 +347,35 @@ restaurantWithItems = [
     location: 'Saheed Nagar',
     items: [
       {
+        itemId:'0',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Pizza.png',
         itemName: 'Margherita Pizza',
         price: 249,
         description: 'Classic cheese pizza with a fresh tomato base and herbs.'
       },
       {
+        itemId:'1',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Biryani.png',
         itemName: 'Chicken Supreme Pizza',
         price: 369,
         description: 'Loaded with tender chicken, bell peppers, and mozzarella.'
       },
       {
+        itemId:'2',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Ice%20Cream.png',
         itemName: 'Chocolate Lava Cake',
         price: 99,
         description: 'Molten chocolate cake served warm with a gooey center.'
       },
       {
+        itemId:'3',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Dosa.png',
         itemName: 'Garlic Breadsticks',
         price: 119,
         description: 'Freshly baked breadsticks brushed with garlic butter.'
       },
       {
+        itemId:'4',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Noodles.png',
         itemName: 'Tandoori Paneer Pizza',
         price: 299,
@@ -354,6 +384,7 @@ restaurantWithItems = [
     ]
   },
   {
+    resId:'5',
     imageUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/7/17/53d5f5b4-1e37-4855-8f11-aa5ef1d12d47_408185.jpg',
     offer: '₹100 off above ₹999',
     name: 'Taco Bell',
@@ -363,30 +394,35 @@ restaurantWithItems = [
     location: 'MG Road',
     items: [
       {
+        itemId:'0',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Pizza.png',
         itemName: 'Pepperoni Feast',
         price: 399,
         description: 'Classic pepperoni slices on a cheese and tomato base.'
       },
       {
+        itemId:'1',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Burger.png',
         itemName: 'Stuffed Garlic Bread',
         price: 139,
         description: 'Soft garlic bread stuffed with cheese and herbs.'
       },
       {
+        itemId:'2',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Shawarma.png',
         itemName: 'Chicken Tikka Pizza',
         price: 349,
         description: 'Flavorful tikka-marinated chicken on a cheesy crust.'
       },
       {
+        itemId:'3',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Cake.png',
         itemName: 'Chocolate Mousse',
         price: 99,
         description: 'Rich chocolate mousse with a creamy texture.'
       },
       {
+        itemId:'4',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/South%20Indian.png',
         itemName: 'Veggie Delight',
         price: 289,
@@ -395,6 +431,7 @@ restaurantWithItems = [
     ]
   },
   {
+    resId:'6',
     imageUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/11/5/db2f458b-9036-4826-9dc1-bcd9c758ff80_75280.JPG',
     offer: 'Free delivery above ₹799',
     name: 'Sushi Express',
@@ -404,30 +441,35 @@ restaurantWithItems = [
     location: 'Park Street',
     items: [
       {
+        itemId:'0',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Burger.png',
         itemName: 'Whopper',
         price: 199,
         description: 'Signature Whopper with flame-grilled patty, lettuce, and mayo.'
       },
       {
+        itemId:'1',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Noodles.png',
         itemName: 'Cheesy Fries',
         price: 79,
         description: 'Crispy fries topped with melted cheese.'
       },
       {
+        itemId:'2',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Rolls.png',
         itemName: 'Chicken Nuggets',
         price: 149,
         description: 'Juicy chicken nuggets served with a side of ketchup.'
       },
       {
+        itemId:'3',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Ice%20Cream.png',
         itemName: 'Vanilla Shake',
         price: 99,
         description: 'Thick and creamy vanilla shake topped with whipped cream.'
       },
       {
+        itemId:'4',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Dosa.png',
         itemName: 'Spicy Chicken Burger',
         price: 249,
@@ -436,6 +478,7 @@ restaurantWithItems = [
     ]
   },
   {
+    resId:'7',
     imageUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/7/17/53d5f5b4-1e37-4855-8f11-aa5ef1d12d47_408185.jpg',
     offer: '₹50 off above ₹299',
     name: "McDonald's",
@@ -445,30 +488,35 @@ restaurantWithItems = [
     location: 'Downtown',
     items: [
       {
+        itemId:'0',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Noodles.png',
         itemName: 'Veggie Delight Sub',
         price: 179,
         description: 'Fresh veggie sub with tomatoes, cucumbers, and lettuce.'
       },
       {
+        itemId:'1',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Kebab.png',
         itemName: 'Chicken Teriyaki Sub',
         price: 229,
         description: 'Sweet teriyaki-glazed chicken with fresh veggies.'
       },
       {
+        itemId:'2',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Rolls.png',
         itemName: 'Turkey Breast Sub',
         price: 239,
         description: 'Lean turkey breast with fresh toppings and your choice of sauce.'
       },
       {
+        itemId:'3',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Ice%20Cream.png',
         itemName: 'Choco Chip Cookie',
         price: 50,
         description: 'Classic cookie with chocolate chips baked to perfection.'
       },
       {
+        itemId:'4',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Cake.png',
         itemName: 'Double Chocolate Cookie',
         price: 50,
@@ -477,6 +525,7 @@ restaurantWithItems = [
     ]
   },
   {
+    resId:'8',
     imageUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/7/17/53d5f5b4-1e37-4855-8f11-aa5ef1d12d47_408185.jpg',
     offer: '₹50 off above ₹299',
     name: "The Great indian Kitchen",
@@ -486,30 +535,35 @@ restaurantWithItems = [
     location: 'Downtown',
     items: [
       {
+        itemId:'0',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Noodles.png',
         itemName: 'Veggie Delight Sub',
         price: 179,
         description: 'Fresh veggie sub with tomatoes, cucumbers, and lettuce.'
       },
       {
+        itemId:'1',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Kebab.png',
         itemName: 'Chicken Teriyaki Sub',
         price: 229,
         description: 'Sweet teriyaki-glazed chicken with fresh veggies.'
       },
       {
+        itemId:'2',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Rolls.png',
         itemName: 'Turkey Breast Sub',
         price: 239,
         description: 'Lean turkey breast with fresh toppings and your choice of sauce.'
       },
       {
+        itemId:'3',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Ice%20Cream.png',
         itemName: 'Choco Chip Cookie',
         price: 50,
         description: 'Classic cookie with chocolate chips baked to perfection.'
       },
       {
+        itemId:'4',
         imgUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Cake.png',
         itemName: 'Double Chocolate Cookie',
         price: 50,
@@ -521,8 +575,23 @@ restaurantWithItems = [
 ];
 
 getRestaurantByName(name: string) {
-  return this.restaurantWithItems.find(restaurant => restaurant.name.toLowerCase() === name.toLowerCase());
+  // Find the restaurant that matches the name
+  const restaurant = this.restaurantWithItems.find(restaurant => restaurant.name.toLowerCase() === name.toLowerCase());
+
+  if (restaurant) {
+    // Create a new object to include isFavorite in each item
+    return {
+      ...restaurant,
+      items: restaurant.items.map(item => ({
+        ...item,
+        isFavorite: false // Set isFavorite to false for each item
+      }))
+    };
+  }
+
+  return undefined; // If restaurant is not found
 }
+
 
 
 

@@ -1,0 +1,142 @@
+<section class="bg-white text-gray-600 shadow-md">
+  <div class="container mx-auto flex items-center justify-between px-4">
+    <!-- Logo -->
+    <div class="logo font-bold m-5 flex">
+      <img
+        src="assets/Swiggylogo.png"
+        alt="Logo"
+        class="h-14 bg-custom-orange rounded-xl"
+      />
+
+      <div class="cursor-pointer mt-2">
+        <p class="font-bold text-xl uppercase ml-10">Secure Checkout</p>
+      </div>
+    </div>
+
+    <!-- Navbar List -->
+    <div class="hidden font-bold text-xl md:flex space-x-8">
+      <div>
+        <button
+          class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
+        >
+          <i class="fa-regular fa-life-ring mr-3"></i><span>Help</span>
+        </button>
+      </div>
+      <div (click)="redirectToHome()">
+        <button
+          class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
+        >
+          <i class="fa-solid fa-user mr-3"></i
+          ><span>{{ isLoggedIn ? "Logout" : "Sign In" }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <div class="md:hidden">
+      <button class="text-gray-700">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<section class="flex flex-col justify-center items-center space-y-5 mt-10" *ngIf="cartItems.length <= 0">
+  <div>
+    <img src="assets/cartpic.png" alt="" />
+  </div>
+  <div class="space-y-4 justify-center items-center">
+   <div class="font-bold text-3xl text-center"> <h1>Your cart is empty</h1></div>
+    <div class="font-semibold text-gray-500 text-xl text-center"><p>You can go to home page to view more restaurants</p></div>
+  </div>
+  <div class=" justify-center items-center font-bold text-2xl">
+    <button class="bg-custom-orange uppercase text-white px-6 py-3 rounded-lg">See restaurants near you</button>
+  </div>
+</section>
+
+
+
+<!-- <section class="mt-10">
+    <div class=" bg-custom-orange w-48">
+        <h1>Card Empty</h1>
+        <p>Good food is always cooking! Go ahead, order some yummy items from the menu.</p>
+    </div>
+</section> -->
+
+<!-- <div class="mx-32">
+  <h1 class="font-bold text-4xl pt-14">Your Cart</h1>
+  <div *ngFor="let cartItem of cartItems" class="py-10">
+    <h2 class="font-bold text-2xl">{{ cartItem?.restaurantName }}</h2>
+    <p class="text-lg">{{ cartItem?.restaurantLocation }}</p>
+    <div class="flex justify-between items-center mt-4">
+      <div>
+        <h3 class="text-xl font-semibold">{{ cartItem?.item?.itemName }}</h3>
+        <p class="text-lg">Price: ₹{{ cartItem.item.price }}</p>
+        <p class="text-sm text-gray-600">{{ cartItem?.item?.description }}</p>
+        <p>Quantity: {{ cartItem?.quantity }}</p>
+      </div>
+    </div>
+  </div>
+  <button (click)="clearCart()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg">Clear Cart</button>
+</div> -->
+
+
+
+<div *ngIf="cartItems.length > 0; else emptyCart" class=" flex flex-row mt-10 mx-40 justify-center items-center">
+  <div class="justify-center items-center flex flex-col">
+    <div *ngFor="let cartItem of cartItems">
+      <div class="mb-10"><h2 class="font-bold text-4xl">Your Added Items on {{cartItem.name}} </h2></div>
+      <div *ngIf="cartItem">
+        <div class="flex space-x-4">
+          <div class=" w-2/6  rounded-lg">
+            <img [src]="cartItem.imgUrl" alt="{{cartItem.name}}" class=" rounded-xl h-5/6">
+          </div>
+          <div class="font-semibold mt-20 space-y-4">
+            <h1 class="font-bold text-5xl"> {{cartItem.name }} </h1>
+            <h3 class="text-2xl text-gray-500">{{cartItem.location}}</h3>
+          </div>
+        </div>
+        <hr class="h-1/6 border bg-gray-500 mt-5">
+        <!-- Item List -->
+        <div *ngFor="let item of cartItem.items">
+          <div *ngIf="item">
+            <div class="flex justify-center items-center">
+              <div class="flex space-y-4 justify-center items-center w-4/6">
+                <div class="w-2/6">
+                  <img [src]="item.imgUrl" alt="{{item.name}}">
+                </div>
+                <div class="font-semibold">
+                  <h1 class="font-bold text-3xl"> {{item.itemName }} </h1>
+                  <h3 class="text-lg text-gray-500">{{item.description}}</h3>
+                </div>
+              </div>
+              <div class=" text-end w-2/6">
+                <h3 class="font-bold text-2xl">Price: {{item.price | currency:'INR'}}</h3>
+                <h5 class="font-semibold text-lg">Qty:{{item.quantity}} </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="h-1/6 border bg-gray-500 mt-5">
+    </div>
+    <div class="my-10 w-5/6">
+      <div class="flex font-bold text-3xl justify-between items-center">
+        <h1>Sub total: </h1>
+        <h5>{{ totalBill | currency: 'INR' }}</h5>
+      </div>
+      <div class="font-semibold text-gray-500">
+        <p> Extra Charges May Apply</p>
+      </div>
+      <div class="mt-5 bg-custom-orange text-center rounded-lg">
+        <button (click)="placeOrder()" class="font-bold text-3xl p-3 px-3">Place The  Order</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Empty Cart Message -->
+<ng-template #emptyCart>
+  <p>Your cart is empty.</p>
+</ng-template>

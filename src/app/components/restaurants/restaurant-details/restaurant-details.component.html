@@ -31,39 +31,52 @@
   </div>
 
   <div *ngIf="restaurantItem" class="mx-32">
-    <h1 class="font-bold text-4xl pt-14 pb-5">Items List of {{restaurantName}}</h1>
-    
+    <h1 class="font-bold text-4xl pt-14 pb-5">
+      Items List of {{ restaurantName }}
+    </h1>
+
     <!-- Loop over items within the restaurant -->
     <div *ngFor="let item of restaurantItem?.items" class="py-3">
-      
       <!-- Card Content -->
       <div class="flex justify-between items-center">
         <div class="text-xl font-semibold space-y-2 w-1/2">
-          
           <!-- Dot icon and item details -->
           <div class="flex items-center space-x-3">
-            <i class="fa-regular fa-circle-dot text-green-600 text-3xl"></i>
+            <!-- <i class="fa-regular fa-circle-dot text-green-600 text-3xl"></i> -->
+            <!-- Star icon for toggling favorites -->
+            <button (click)="toggleFavorite(item)" class="favorite-btn"> 
+              <i
+                class="fa"
+                [ngClass]="
+                  item.isFavorite ? 'fa-solid fa-star' : 'fa-regular fa-star'
+                "
+              ></i>
+            </button>
           </div>
-          
-          <h3 class="font-bold text-2xl">{{ item.itemName }}</h3>
+
+          <h3 class="font-bold text-2xl">{{ item.itemName }} </h3>
           <p class="font-bold text-xl">₹{{ item.price }}</p>
           <p class="text-gray-600">{{ item.description }}</p>
         </div>
-        
+
         <!-- Image and Add button section -->
         <div class="relative w-32 flex-shrink-0">
-          <img [src]="item.imgUrl" alt="{{ item.itemName }}" class="w-full h-auto object-cover rounded-lg">
-          <button class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white px-4 py-1 rounded-lg hover:bg-orange-600">
+          <img
+            [src]="item.imgUrl"
+            alt="{{ item.itemName }}"
+            class="w-full h-auto object-cover rounded-lg"
+          />
+          <button
+            (click)="addItemToCart(item)"
+            class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white px-4 py-1 rounded-lg hover:bg-orange-600"
+          >
             Add
           </button>
         </div>
       </div>
-      
+
       <!-- Horizontal line to separate each card -->
-      <hr class="border-black border-1 mt-20">
-      
+      <hr class="border-black border-1 mt-20" />
     </div>
   </div>
-  
-  
 </section>
