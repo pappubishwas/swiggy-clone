@@ -6,14 +6,15 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
-  isLoggedIn$ = this.isLoggedInSubject.asObservable();
+  private loggedIn = new BehaviorSubject<boolean>(this.checkInitialLoginState());
+  isLoggedIn$ = this.loggedIn.asObservable();
 
-  setLoggedIn(value: boolean) {
-    this.isLoggedInSubject.next(value);
+  setLoggedIn(status: boolean) {
+    this.loggedIn.next(status);
   }
 
-  getLoggedIn() {
-    return this.isLoggedInSubject.value;
+  private checkInitialLoginState(): boolean {
+    const userDetails = localStorage.getItem('loggedInUser');
+    return !!userDetails;
   }
 }

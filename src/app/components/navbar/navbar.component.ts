@@ -22,11 +22,18 @@ export class NavbarComponent {
     this.router.navigate(['/favourites']);
   }
   isLoggedIn = false;
-
+  userName='User'
   ngOnInit() {
     this.authService.isLoggedIn$.subscribe((status) => {
       this.isLoggedIn = status;
       console.log('Login status:', this.isLoggedIn);
+      if (status) {
+        const userDetails = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
+        console.log(userDetails);
+        this.userName = userDetails.name || 'User';
+      } else {
+        this.userName = 'Sign In';
+      }
     });
   }
 }

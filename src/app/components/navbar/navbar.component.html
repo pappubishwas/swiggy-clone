@@ -39,9 +39,10 @@
           </button>
         </div>
         <div (click)="redirectToHome()">
-              <button class=" text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition">
-                  <i class="fa-solid fa-user mr-2"></i><span>{{ isLoggedIn ? "Logout" : "Sign In" }}</span>
-                </button>
+          <button class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition">
+            <i class="fa-solid fa-user mr-2"></i>
+            <span class="truncate-username">{{ isLoggedIn ? userName : "Sign In" }}</span>
+          </button>          
           </div>
         <div class="get-app" (click)="redirectToCheckOut()">
           <button

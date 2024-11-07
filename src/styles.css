@@ -2,3 +2,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.truncate-username {
+    max-width: 100px; /* Adjust width based on available space */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }

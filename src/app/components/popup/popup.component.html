@@ -1,7 +1,7 @@
-<div *ngIf="isVisible" class="popup-overlay">
-    <div class="popup-content">
-      <p>{{ message }}</p>
-      <button (click)="hide()">Close</button>
+<div *ngIf="isVisible" class="popup-overlay justify-center items-center">
+    <div class="popup-content space-y-10 text-center w-1/2">
+      <p class="font-semibold text-2xl">{{ message }}</p>
+      <button (click)="hide()" class="font-bold text-xl bg-custom-orange text-white p-3 px-6 rounded-lg">Close</button>
     </div>
   </div>
   

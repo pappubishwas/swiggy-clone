@@ -27,7 +27,7 @@
     <input *ngIf="isExistingUser" type="password" [(ngModel)]="password" placeholder="Password" class="border w-full p-2 rounded my-4">
 
     <button (click)="login()" class="bg-custom-orange text-white w-full py-2 rounded my-4">
-      {{ isExistingUser ? 'Login' : 'Continue' }}
+      {{ loggedIn ? 'Login' : 'Continue' }}
     </button>
     <p class="text-gray-500 text-md font-medium">By clicking on Login, I accept the Terms & Conditions & Privacy Policy</p>
   </div>
@@ -41,3 +41,5 @@
     <button (click)="createUser()" class="bg-custom-orange text-white w-full py-2 rounded my-4">Register</button>
   </div>
 </div>
+
+<app-popup #popup></app-popup>

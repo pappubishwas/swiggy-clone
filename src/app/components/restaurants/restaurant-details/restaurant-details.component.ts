@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { MenuListService } from '../../../services/menu-list.service';
 import { CommonModule } from '@angular/common';
+import { PopupComponent } from '../../popup/popup.component';
 
 @Component({
   selector: 'app-restaurant-details',
   standalone: true,
-  imports: [NavbarComponent, CommonModule],
+  imports: [NavbarComponent, CommonModule,PopupComponent],
   templateUrl: './restaurant-details.component.html',
   styleUrls: ['./restaurant-details.component.css']
 })
@@ -44,6 +45,13 @@ export class RestaurantDetailsComponent implements OnInit {
     });
   }
 
+
+  @ViewChild('popup') popup!: PopupComponent;
+
+  displayMessage(message:string) {
+    this.popup.show(message);
+  }
+
   addItemToCart(item: any) {
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
     let restaurantInCart = cart.find((cartRestaurant: any) => cartRestaurant.resId === this.restaurantItem?.resId);
@@ -66,7 +74,7 @@ export class RestaurantDetailsComponent implements OnInit {
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
-    alert('Item added to cart!');
+    this.displayMessage('Item added to cart!');
   }
 
   checkIfFavorite() {
@@ -104,17 +112,17 @@ export class RestaurantDetailsComponent implements OnInit {
         if (restaurantInFavorites.items.length === 0) {
           const updatedFavorites = favorites.filter((fav: any) => fav.resId !== this.restaurantItem?.resId);
           localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-          alert('Item and restaurant removed from favorites!');
+          this.displayMessage('Item and restaurant removed from favorites!');
         } else {
           localStorage.setItem('favorites', JSON.stringify(favorites));
-          alert('Item removed from favorites!');
+          this.displayMessage('Item removed from favorites!');
         }
       } else {
         // If item does not exist, add it to favorites
         restaurantInFavorites.items.push({ ...item, isFavorite: true });
         item.isFavorite = true;
         localStorage.setItem('favorites', JSON.stringify(favorites));
-        alert('Item added to favorites!');
+        this.displayMessage('Item added to favorites!');
       }
     } else {
       // If restaurant is not in favorites, add it with the selected item
@@ -131,7 +139,7 @@ export class RestaurantDetailsComponent implements OnInit {
       });
       item.isFavorite = true;
       localStorage.setItem('favorites', JSON.stringify(favorites));
-      alert('Restaurant and item added to favorites!');
+      this.displayMessage('Restaurant and item added to favorites!');
     }
   }
   

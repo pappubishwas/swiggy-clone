@@ -82,46 +82,7 @@ export class FavoritesComponent {
     alert('Item added to cart!');
   }
 
-  // toggleFavorite(item: any, restaurantId: string) {
-  //   const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-  //   let restaurantInFavorites = favorites.find((fav: any) => fav.resId === restaurantId);
 
-  //   if (restaurantInFavorites) {
-  //     const itemIndex = restaurantInFavorites.items.findIndex((favItem: any) => favItem.itemId === item.itemId);
-  //     if (itemIndex > -1) {
-  //       restaurantInFavorites.items.splice(itemIndex, 1);
-  //       item.isFavorite = false;
-
-  //       if (restaurantInFavorites.items.length === 0) {
-  //         const updatedFavorites = favorites.filter((fav: any) => fav.resId !== restaurantId);
-  //         localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-  //         alert('Item and restaurant removed from favorites!');
-  //       } else {
-  //         localStorage.setItem('favorites', JSON.stringify(favorites));
-  //         alert('Item removed from favorites!');
-  //       }
-  //     } else {
-  //       restaurantInFavorites.items.push({ ...item, isFavorite: true });
-  //       item.isFavorite = true;
-  //       localStorage.setItem('favorites', JSON.stringify(favorites));
-  //       alert('Item added to favorites!');
-  //     }
-  //   } else {
-  //     const restaurant = this.favouriteItems.find(r => r.resId === restaurantId);
-  //     if (restaurant) {
-  //       favorites.push({
-  //         resId: restaurant.resId,
-  //         name: restaurant.name,
-  //         imgUrl: restaurant.imageUrl,
-  //         location: restaurant.location,
-  //         items: [{ ...item, isFavorite: true }]
-  //       });
-  //       item.isFavorite = true;
-  //       localStorage.setItem('favorites', JSON.stringify(favorites));
-  //       alert('Restaurant and item added to favorites!');
-  //     }
-  //   }
-  // }
 
   toggleFavorite(item: any, restaurantId: string) {
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
@@ -144,27 +105,9 @@ export class FavoritesComponent {
         } else {
           localStorage.setItem('favorites', JSON.stringify(favorites));
         }
-      } else {
-        // Add item to restaurant's favorites if it doesn't exist
-        restaurantInFavorites.items.push({ ...item, isFavorite: true });
-        item.isFavorite = true;
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-      }
-    } else {
-      // If restaurant isn't in favorites, add it with the item
-      const restaurant = this.favouriteItems.find(r => r.resId === restaurantId);
-      if (restaurant) {
-        favorites.push({
-          resId: restaurant.resId,
-          name: restaurant.name,
-          imgUrl: restaurant.imageUrl,
-          location: restaurant.location,
-          items: [{ ...item, isFavorite: true }]
-        });
-        item.isFavorite = true;
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-      }
-    }
+        this.displayMessage("Item removed from favourite list! ")
+      } 
+    } 
 
     // Update favouriteItems directly for immediate UI update
     this.loadFavouriteItems();
@@ -174,8 +117,8 @@ export class FavoritesComponent {
 
   @ViewChild('popup') popup!: PopupComponent;
 
-  displayMessage() {
-    this.popup.show('This is a message from OtherComponent!');
+  displayMessage(message:string) {
+    this.popup.show(message);
   }
 
 }
