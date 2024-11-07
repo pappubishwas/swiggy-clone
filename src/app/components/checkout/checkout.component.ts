@@ -8,12 +8,11 @@ import { PopupComponent } from '../popup/popup.component';
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [CommonModule, HttpClientModule,PopupComponent], // Add HttpClientModule here
+  imports: [CommonModule, HttpClientModule, PopupComponent],
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css'],
 })
 export class CheckoutComponent implements OnInit {
-  
   @ViewChild('popup') popup!: PopupComponent;
 
   currency: any;
@@ -21,7 +20,7 @@ export class CheckoutComponent implements OnInit {
   isLoggedIn = false;
   totalBill = 0;
 
-  cartItems:{
+  cartItems: {
     resId: string;
     imgUrl: string;
     offer: string;
@@ -30,14 +29,14 @@ export class CheckoutComponent implements OnInit {
     deliveryTime: string;
     cuisine: string;
     location: string;
-    items: { 
-      itemId: string; 
-      imgUrl: string; 
-      itemName: string; 
-      price: number; 
-      description: string; 
+    items: {
+      itemId: string;
+      imgUrl: string;
+      itemName: string;
+      price: number;
+      description: string;
       quantity: number;
-      isFavorite: boolean; 
+      isFavorite: boolean;
     }[];
   }[] = [];
 
@@ -64,12 +63,13 @@ export class CheckoutComponent implements OnInit {
 
   increaseQuantity(item: any) {
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-  
-    // Find the restaurant in cart and the item within it
+
     const restaurantInCart = cart.find((cartRestaurant: any) =>
-      cartRestaurant.items.some((cartItem: any) => cartItem.itemId === item.itemId)
+      cartRestaurant.items.some(
+        (cartItem: any) => cartItem.itemId === item.itemId
+      )
     );
-  
+
     if (restaurantInCart) {
       const existingItem = restaurantInCart.items.find(
         (cartItem: any) => cartItem.itemId === item.itemId
@@ -79,45 +79,42 @@ export class CheckoutComponent implements OnInit {
         localStorage.setItem('cart', JSON.stringify(cart));
       }
     }
-  
-    // Update local cartItems to reflect changes
+
     this.loadCartItems();
     this.calculateTotalPay();
     this.cdr.detectChanges();
   }
-  
+
   decreaseQuantity(item: any) {
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-  
-    // Find the restaurant in cart and the item within it
+
     const restaurantInCart = cart.find((cartRestaurant: any) =>
-      cartRestaurant.items.some((cartItem: any) => cartItem.itemId === item.itemId)
+      cartRestaurant.items.some(
+        (cartItem: any) => cartItem.itemId === item.itemId
+      )
     );
-  
+
     if (restaurantInCart) {
       const existingItem = restaurantInCart.items.find(
         (cartItem: any) => cartItem.itemId === item.itemId
       );
       if (existingItem && existingItem.quantity > 0) {
         existingItem.quantity -= 1;
-  
-        // Optionally, remove item if quantity is 0
+
         if (existingItem.quantity === 0) {
           restaurantInCart.items = restaurantInCart.items.filter(
             (cartItem: any) => cartItem.itemId !== item.itemId
           );
         }
-  
+
         localStorage.setItem('cart', JSON.stringify(cart));
       }
     }
-  
-    // Update local cartItems to reflect changes
+
     this.loadCartItems();
     this.calculateTotalPay();
     this.cdr.detectChanges();
   }
-  
 
   clearCart() {
     localStorage.removeItem('cart');
@@ -136,7 +133,7 @@ export class CheckoutComponent implements OnInit {
     if (this.cartItems) {
       for (let restaurant of this.cartItems) {
         for (let item of restaurant.items) {
-          this.totalBill += item.price * (item.quantity || 0); // Handle undefined quantity as 0
+          this.totalBill += item.price * (item.quantity || 0);
         }
       }
     }
@@ -150,8 +147,8 @@ export class CheckoutComponent implements OnInit {
 
     this.http.post(this.mockapi, orderData).subscribe({
       next: (response) => {
-        localStorage.removeItem('cart'); // This removes the cart from local storage
-        this.cartItems = []; // This clears the cartItems array in the component        
+        localStorage.removeItem('cart');
+        this.cartItems = [];
         console.log('Order placed successfully:', response);
         this.displayMessage('Order placed successfully!');
         this.cdr.detectChanges();
@@ -165,5 +162,11 @@ export class CheckoutComponent implements OnInit {
 
   displayMessage(message: string) {
     this.popup.show(message);
+  }
+
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }

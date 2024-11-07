@@ -1,18 +1,19 @@
 import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { PopupComponent } from '../popup/popup.component';
+import { MenuSiderbarComponent } from '../menu-siderbar/menu-siderbar.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [PopupComponent],
+  imports: [PopupComponent, MenuSiderbarComponent],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
   loggedIn = false;
-  userName = 'Sign In'; // Default to "Sign In"
-  @Output() loginToggle = new EventEmitter<void>(); // Output event to toggle login sidebar
+  userName = 'Sign In';
+  @Output() loginToggle = new EventEmitter<void>();
   @ViewChild('popup') popup!: PopupComponent;
 
   constructor(private authService: AuthService) {}
@@ -22,12 +23,13 @@ export class HeaderComponent {
   }
 
   ngOnInit() {
-    this.authService.isLoggedIn$.subscribe(status => {
+    this.authService.isLoggedIn$.subscribe((status) => {
       this.loggedIn = status;
 
-      // Update userName if logged in
       if (status) {
-        const userDetails = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
+        const userDetails = JSON.parse(
+          localStorage.getItem('loggedInUser') || '{}'
+        );
         console.log(userDetails);
         this.userName = userDetails.name || 'User';
       } else {
@@ -38,21 +40,25 @@ export class HeaderComponent {
 
   toggleLoginLogout() {
     if (this.loggedIn) {
-      // Log out the user
       localStorage.removeItem('loggedInUser');
-      this.authService.setLoggedIn(false); // Set AuthService status to logged out
-      this.displayMessage("You have been logged out.");
+      this.authService.setLoggedIn(false);
+      this.displayMessage('You have been logged out.');
     } else {
-      // Trigger login sidebar
       this.openLoginSidebar();
     }
   }
 
   openLoginSidebar() {
-    this.loginToggle.emit(); // Emit event to open the login sidebar
+    this.loginToggle.emit();
   }
 
   onUserLoggedIn() {
-    this.loggedIn = true; // Set logged in to true when the user logs in
+    this.loggedIn = true;
+  }
+
+  isSidebarOpen: boolean = false;
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
   }
 }

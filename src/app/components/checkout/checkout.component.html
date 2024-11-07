@@ -1,94 +1,100 @@
 <section class="bg-white text-gray-600 shadow-md">
   <div class="container mx-auto flex items-center justify-between px-4">
     <!-- Logo -->
-    <div class="logo font-bold m-5 flex">
+    <div class="logo font-bold m-5 flex items-center justify-between w-full md:w-auto">
       <img
         src="assets/Swiggylogo.png"
         alt="Logo"
         class="h-14 bg-custom-orange rounded-xl"
       />
-
-      <div class="cursor-pointer mt-2">
-        <p class="font-bold text-xl uppercase ml-10">Secure Checkout</p>
+      <div class="cursor-pointer mt-2 ml-2 md:ml-10">
+        <p class="font-bold text-xl uppercase">Secure Checkout</p>
       </div>
     </div>
 
-    <!-- Navbar List -->
-    <div class="hidden font-bold text-xl md:flex space-x-8">
+    <!-- Navbar List (Hidden on Small Screens) -->
+    <div class="hidden md:flex font-bold text-xl space-x-8">
       <div>
-        <button
-          class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
-        >
+        <button class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition">
           <i class="fa-regular fa-life-ring mr-3"></i><span>Help</span>
         </button>
       </div>
       <div (click)="redirectToHome()">
-        <button
-          class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
-        >
-          <i class="fa-solid fa-user mr-3"></i
-          ><span>{{ isLoggedIn ? "Logout" : "Sign In" }}</span>
+        <button class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition">
+          <i class="fa-solid fa-user mr-3"></i><span>{{ isLoggedIn ? "Logout" : "Sign In" }}</span>
         </button>
       </div>
     </div>
 
     <!-- Mobile Menu Toggle -->
-    <div class="md:hidden">
-      <button class="text-gray-700">
+    <div class="md:hidden flex items-center">
+      <button class="text-gray-700" (click)="toggleMenu()">
         <i class="fa-solid fa-bars"></i>
       </button>
     </div>
   </div>
 </section>
 
+<!-- Mobile Menu (Hidden by default) -->
+<div class="md:hidden" *ngIf="isMenuOpen">
+  <div class="flex flex-col items-center py-4">
+    <button class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition mb-4">
+      <i class="fa-regular fa-life-ring mr-3"></i><span>Help</span>
+    </button>
+    <button (click)="redirectToHome()" class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition">
+      <i class="fa-solid fa-user mr-3"></i><span>{{ isLoggedIn ? "Logout" : "Sign In" }}</span>
+    </button>
+  </div>
+</div>
 
 <section class="flex flex-col justify-center items-center space-y-5 mt-10" *ngIf="cartItems.length <= 0">
   <div>
     <img src="assets/cartpic.png" alt="" />
   </div>
   <div class="space-y-4 justify-center items-center">
-   <div class="font-bold text-3xl text-center"> <h1>Your cart is empty</h1></div>
-    <div class="font-semibold text-gray-500 text-xl text-center"><p>You can go to home page to view more restaurants</p></div>
+    <div class="font-bold text-3xl text-center">
+      <h1>Your cart is empty</h1>
+    </div>
+    <div class="font-semibold text-gray-500 text-xl text-center">
+      <p>You can go to home page to view more restaurants</p>
+    </div>
   </div>
-  <div class=" justify-center items-center font-bold text-2xl">
+  <div class="justify-center items-center font-bold text-2xl">
     <button (click)="redirectToRestaurant()" class="bg-custom-orange uppercase text-white px-6 py-3 rounded-lg">See restaurants near you</button>
   </div>
 </section>
 
-
-
-<div *ngIf="cartItems && cartItems.length > 0" class="flex flex-row mt-10 mx-40 justify-center items-center">
-  <div class="justify-center items-center flex flex-col">
+<div *ngIf="cartItems && cartItems.length > 0" class="flex flex-col md:flex-row mt-10 mx-4 md:mx-40 justify-center items-center">
+  <div class="justify-center items-center flex flex-col w-full md:w-auto">
     <div *ngFor="let cartItem of cartItems">
       <div class="mb-10">
         <h2 class="font-bold text-4xl">Your Added Items from {{ cartItem.name }}</h2>
       </div>
       <div *ngIf="cartItem">
-        <div class="flex space-x-4">
-          <div class="w-2/6 rounded-lg">
-            <img [src]="cartItem.imgUrl"  alt="{{ cartItem.name }}" class="rounded-xl h-5/6">
+        <div class="flex flex-col md:flex-row space-x-4">
+          <div class="w-full md:w-2/6 rounded-lg">
+            <img [src]="cartItem.imgUrl" alt="{{ cartItem.name }}" class="rounded-xl h-5/6">
           </div>
-          <div class="font-semibold mt-20 space-y-4">
-            <h1 class="font-bold text-5xl">{{ cartItem.name }}</h1>
-            <h3 class="text-2xl text-gray-500">{{ cartItem.location }}</h3>
+          <div class="font-semibold mt-4 md:mt-20 space-y-4">
+            <h1 class="font-bold text-3xl md:text-5xl">{{ cartItem.name }}</h1>
+            <h3 class="text-lg md:text-2xl text-gray-500">{{ cartItem.location }}</h3>
           </div>
         </div>
         <hr class="h-1/6 border bg-gray-500 mt-5">
+        
         <!-- Item List -->
         <div *ngFor="let item of cartItem.items">
           <div *ngIf="item">
-            <div class="flex justify-center items-center">
-              <div class="flex space-y-4 justify-center items-center w-4/6">
-                <div class="w-2/6">
-                  <img [src]="item.imgUrl" alt="{{ item.itemName }}">
-                </div>
-                <div class="font-semibold">
-                  <h1 class="font-bold text-3xl">{{ item.itemName }}</h1>
-                  <h3 class="text-lg text-gray-500">{{ item.description }}</h3>
-                </div>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-x-4 w-full">
+              <div class="w-full md:w-2/6">
+                <img [src]="item.imgUrl" alt="{{ item.itemName }}">
               </div>
-              <div class="flex flex-col text-end justify-end items-end w-2/6">
-                <h3 class="font-bold text-2xl mb-4">Price: {{ item.price | currency:'INR' }}</h3>
+              <div class="font-semibold">
+                <h1 class="font-bold text-xl md:text-3xl">{{ item.itemName }}</h1>
+                <h3 class="text-lg text-gray-500">{{ item.description }}</h3>
+              </div>
+              <div class="flex flex-col md:w-2/6 items-end">
+                <h3 class="font-bold text-xl md:text-2xl mb-4">Price: {{ item.price | currency:'INR' }}</h3>
                 <div *ngIf="item.quantity > 0" class="flex items-center space-x-4 mt-auto font-bold">
                   <button (click)="decreaseQuantity(item)">
                     <i class="fa-solid fa-minus"></i>
@@ -99,15 +105,14 @@
                   </button>
                 </div>
               </div>
-              
             </div>
           </div>
         </div>
       </div>
       <hr class="h-1/6 border bg-gray-500 mt-5">
     </div>
-    <div class="my-10 w-5/6">
-      <div class="flex font-bold text-3xl justify-between items-center">
+    <div class="my-10 w-full md:w-5/6">
+      <div class="flex font-bold text-xl md:text-3xl justify-between items-center">
         <h1>Sub total: </h1>
         <h5>{{ totalBill | currency: 'INR' }}</h5>
       </div>
@@ -115,13 +120,10 @@
         <p> Extra Charges May Apply</p>
       </div>
       <div class="mt-5 bg-custom-orange text-center rounded-lg">
-        <button (click)="placeOrder()" class="font-bold text-3xl p-3 px-3">Place The Order</button>
+        <button (click)="placeOrder()" class="font-bold text-2xl p-3 px-3">Place The Order</button>
       </div>
     </div>
   </div>
 </div>
-
-
-
 
 <app-popup #popup></app-popup>

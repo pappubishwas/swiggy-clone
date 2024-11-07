@@ -1,63 +1,117 @@
 <section class="bg-white text-gray-600 shadow-md">
-    <div class="flex items-center justify-between px-4">
-      <!-- Logo -->
-      <div class="m-5">
-        <img
-          src="assets/Swiggylogo.png"
-          alt="Logo"
-          class="h-14 mx-5 bg-custom-orange rounded-xl"
-        />
-      </div>
-  
-      <!-- Navbar List -->
-      <div class="hidden font-bold text-lg md:flex space-x-6">
-        <div class="cursor-pointer mt-2" (click)="redirectToFavourite()">
+  <div class="flex items-center justify-between px-4 md:flex-row">
+    <!-- Logo -->
+    <div class="m-5">
+      <img
+        src="assets/Swiggylogo.png"
+        alt="Logo"
+        class="h-14 mx-5 bg-custom-orange rounded-xl"
+      />
+    </div>
+
+    <!-- Navbar List for larger screens -->
+    <div class="hidden font-bold text-lg md:flex space-x-6">
+      <div class="cursor-pointer mt-2" (click)="redirectToFavourite()">
         Favourite
-        </div>
-        <div class="cursor-pointer mt-2 flex">
-          <i class="fa-solid fa-briefcase pr-2 mt-1"></i>Swiggy Corporates
-        </div>
-        <div>
-          <button
-            class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
-          >
-            <i class="fa-solid fa-magnifying-glass mr-2"></i><span>Search</span>
-          </button>
-        </div>
-        <div>
-          <button
-            class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
-          >
-            <i class="fa-solid fa-percent mr-2"></i><span>Offers</span>
-          </button>
-        </div>
-        <div>
-          <button
-            class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
-          >
-            <i class="fa-regular fa-life-ring mr-3"></i><span>Help</span>
-          </button>
-        </div>
-        <div (click)="redirectToHome()">
-          <button class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition">
-            <i class="fa-solid fa-user mr-2"></i>
-            <span class="truncate-username">{{ isLoggedIn ? userName : "Sign In" }}</span>
-          </button>          
-          </div>
-        <div class="get-app" (click)="redirectToCheckOut()">
-          <button
-            class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
-          >
-            <i class="fa-solid fa-cart-shopping mr-2"></i><span>Cart</span>
-          </button>
-        </div>
       </div>
-  
-      <!-- Mobile Menu Toggle -->
-      <div class="md:hidden">
-        <button class="text-gray-700">
-          <i class="fa-solid fa-bars"></i>
+      <div class="cursor-pointer mt-2 flex">
+        <i class="fa-solid fa-briefcase pr-2 mt-1"></i>Swiggy Corporates
+      </div>
+      <div>
+        <button
+          class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
+        >
+          <i class="fa-solid fa-magnifying-glass mr-2"></i><span>Search</span>
+        </button>
+      </div>
+      <div>
+        <button
+          class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
+        >
+          <i class="fa-solid fa-percent mr-2"></i><span>Offers</span>
+        </button>
+      </div>
+      <div>
+        <button
+          class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
+        >
+          <i class="fa-regular fa-life-ring mr-3"></i><span>Help</span>
+        </button>
+      </div>
+      <div (click)="redirectToHome()">
+        <button
+          class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
+        >
+          <i class="fa-solid fa-user mr-2"></i>
+          <span class="truncate-username">{{
+            isLoggedIn ? userName : "Sign In"
+          }}</span>
+        </button>
+      </div>
+      <div class="get-app" (click)="redirectToCheckOut()">
+        <button
+          class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
+        >
+          <i class="fa-solid fa-cart-shopping mr-2"></i><span>Cart</span>
         </button>
       </div>
     </div>
-  </section>
+
+    <!-- Mobile Navbar Menu Icon -->
+    <div class="md:hidden flex items-center">
+      <button
+        (click)="toggleMobileMenu()"
+        class="text-gray-600 text-2xl focus:outline-none"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navbar List (Hidden on Larger Screens) -->
+  <div
+    class="font-bold text-lg space-y-4 p-4 bg-white shadow-md md:hidden"
+    *ngIf="isMobileMenuOpen"
+  >
+    <div class="cursor-pointer" (click)="redirectToFavourite()">Favourite</div>
+    <div class="cursor-pointer flex">
+      <i class="fa-solid fa-briefcase pr-2"></i>Swiggy Corporates
+    </div>
+    <div>
+      <button
+        class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition w-full text-left"
+      >
+        <i class="fa-solid fa-magnifying-glass mr-2"></i><span>Search</span>
+      </button>
+    </div>
+    <div>
+      <button
+        class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition w-full text-left"
+      >
+        <i class="fa-solid fa-percent mr-2"></i><span>Offers</span>
+      </button>
+    </div>
+    <div>
+      <button
+        class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition w-full text-left"
+      >
+        <i class="fa-regular fa-life-ring mr-3"></i><span>Help</span>
+      </button>
+    </div>
+    <div (click)="redirectToHome()">
+      <button
+        class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition w-full text-left"
+      >
+        <i class="fa-solid fa-user mr-2"></i>
+        <span>{{ isLoggedIn ? userName : "Sign In" }}</span>
+      </button>
+    </div>
+    <div (click)="redirectToCheckOut()">
+      <button
+        class="text-gray-600 px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition w-full text-left"
+      >
+        <i class="fa-solid fa-cart-shopping mr-2"></i><span>Cart</span>
+      </button>
+    </div>
+  </div>
+</section>

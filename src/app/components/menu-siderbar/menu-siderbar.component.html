@@ -1,0 +1,20 @@
+<div
+  class="fixed inset-y-0 left-0 w-64 bg-black text-white transform transition-transform duration-300"
+  [class.translate-x-0]="isSidebarOpen"
+  [class.-translate-x-full]="!isSidebarOpen"
+>
+  <div class="flex items-center justify-between p-4">
+    <h2 class="text-2xl font-bold">Swiggy</h2>
+    <button (click)="closeSidebar()" class="text-white text-xl">
+      <i class="fa-solid fa-times"></i>
+    </button>
+  </div>
+  <div class="flex flex-col space-y-4 p-4">
+    <a href="#" class="hover:bg-orange-600 p-2 rounded">Swiggy Corporates</a>
+    <a href="#" class="hover:bg-orange-600 p-2 rounded">Partner with Us</a>
+    <a href="#" class="hover:bg-orange-600 p-2 rounded">Get the App</a>
+    <a href="#" class="hover:bg-orange-600 p-2 rounded" >{{
+      loggedIn ? userName : "Sign In"
+    }}</a>
+  </div>
+</div>

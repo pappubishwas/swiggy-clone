@@ -5,40 +5,52 @@
       <img
         src="https://res.cloudinary.com/dutdah0l9/image/upload/v1720058694/Swiggy_logo_bml6he.png"
         alt="Logo"
-        class="h-14"
+        class="h-10 sm:h-12 md:h-14"
       />
     </div>
 
     <!-- Navbar List -->
-    <div class="hidden font-bold text-xl md:flex space-x-8">
+    <div
+      class="hidden md:flex font-bold text-lg lg:text-xl space-x-4 lg:space-x-8"
+    >
       <div class="cursor-pointer mt-2">Swiggy Corporates</div>
       <div class="cursor-pointer mt-2">Partner with Us</div>
       <div class="get-app">
         <button
-          class="border text-white px-6 py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
+          class="border text-white px-4 lg:px-6 py-2 lg:py-3 rounded-xl flex items-center space-x-1 hover:bg-orange-600 transition"
         >
           <span>Get the App</span>
           <i class="fa-solid fa-arrow-up rotate-45"></i>
         </button>
       </div>
 
-      <!-- Sign In - Removed nested button -->
+      <!-- Sign In -->
       <div
-      class="signin px-6 py-3 rounded-xl bg-black hover:text-custom-orange cursor-pointer flex items-center justify-center"
-      (click)="toggleLoginLogout()"
-    >
-      <span class="truncate-username">{{ loggedIn ? userName : "Sign In" }}</span>
+        class="signin px-4 lg:px-6 py-2 lg:py-3 rounded-xl bg-black hover:text-custom-orange cursor-pointer flex items-center justify-center"
+        (click)="toggleLoginLogout()"
+      >
+        <span class="truncate-username">{{
+          loggedIn ? userName : "Sign In"
+        }}</span>
+      </div>
     </div>
-    
-    </div>
-  
+
     <!-- Mobile Menu Toggle -->
     <div class="md:hidden">
-      <button class="text-gray-700">
-        <i class="fa-solid fa-bars"></i>
+      <button class="text-white" (click)="toggleSidebar()">
+        <i class="fa-solid fa-bars text-xl"></i>
       </button>
     </div>
   </div>
 </section>
+
+<!-- Sidebar component -->
+<app-menu-siderbar
+  [isSidebarOpen]="isSidebarOpen"
+  [loggedIn]="loggedIn"
+  [userName]="userName"
+></app-menu-siderbar>
+
+<!-- Popup Window -->
 
 <app-popup #popup></app-popup>

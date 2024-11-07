@@ -1,50 +1,53 @@
 <app-navbar></app-navbar>
 
-<section class="mx-auto py-10 space-y-3 w-9/12">
-  <p class="text-gray-500">Home / Bhubaneswar / {{ restaurantName }}</p>
-  <h1 class="font-bold text-4xl p-5">{{ restaurantName }}</h1>
+<section class="mx-auto py-10 space-y-3 w-full sm:w-10/12 md:w-9/12 px-4">
+  <p class="text-gray-500 text-sm sm:text-base">
+    Home / Bhubaneswar / {{ restaurantName }}
+  </p>
+  <h1 class="font-bold text-2xl sm:text-3xl md:text-4xl py-3 sm:p-5">
+    {{ restaurantName }}
+  </h1>
 
-  <div class="space-y-3 shadow-lg p-4 rounded-lg mx-9">
+  <div class="space-y-3 shadow-lg p-4 sm:p-6 rounded-lg">
     <!-- Rating Section -->
-    <div class="flex items-center font-bold text-xl">
+    <div class="flex items-center font-semibold text-base sm:text-xl">
       <i class="fa-solid fa-star mr-1 text-green-500"></i>
       <p>{{ restaurantItem?.rating }} (1.5k+ ratings) • 400 for two</p>
     </div>
 
     <!-- Cuisine Section -->
-    <h1 class="text-custom-orange font-bold text-lg">Pizzas, Italian</h1>
+    <h1 class="text-custom-orange font-bold text-base sm:text-lg">
+      Pizzas, Italian
+    </h1>
 
     <!-- Outlet Details with Circle Markers and Vertical Line -->
-    <ul class="relative list-style-none ml-4">
-      <li class="flex items-center mb-2 font-semibold">
+    <ul class="relative list-none ml-4">
+      <li class="flex items-center mb-2 font-medium text-sm sm:text-base">
         <span class="circle-marker"></span>
-        <span class="font-bold text-lg mr-3">Outlet: </span
-        >{{ restaurantItem?.location }}
+        <span class="font-bold text-base sm:text-lg mr-2 sm:mr-3">Outlet:</span>
+        {{ restaurantItem?.location }}
       </li>
-      <li class="flex items-center mb-2">
+      <li class="flex items-center mb-2 text-sm sm:text-base">
         <span class="circle-marker"></span>
-        <span class="font-bold text-lg">{{
-          restaurantItem?.deliveryTime
-        }}</span>
+        <span class="font-bold text-base sm:text-lg">{{ restaurantItem?.deliveryTime }}</span>
       </li>
     </ul>
   </div>
 
-  <div *ngIf="restaurantItem" class="mx-32">
-    <h1 class="font-bold text-4xl pt-14 pb-5">
+  <div *ngIf="restaurantItem" class="mx-4 sm:mx-12 md:mx-32">
+    <h1 class="font-bold text-2xl sm:text-3xl md:text-4xl pt-10 sm:pt-14 pb-4 sm:pb-5">
       Items List of {{ restaurantName }}
     </h1>
 
-
-
-    <!-- restaurant-details.component.html -->
-<div *ngFor="let item of restaurantItem?.items">
-  <app-item-card 
-  [item]="item"
-  [restaurantId]="restaurantItem.resId"
-  [restaurantItem]="restaurantItem"></app-item-card>
-</div>
-
+    <!-- Items List -->
+    <div *ngFor="let item of restaurantItem?.items">
+      <app-item-card 
+        [item]="item"
+        [restaurantId]="restaurantItem.resId"
+        [restaurantItem]="restaurantItem">
+      </app-item-card>
+    </div>
   </div>
 </section>
+
 

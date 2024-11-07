@@ -2,43 +2,92 @@
 <div *ngIf="isOpen" class="fixed inset-0 bg-black opacity-50 z-10"></div>
 
 <!-- Sidebar Container -->
-<div class="container pl-10 mx-auto p-4 fixed top-0 right-0 h-full w-2/5 bg-white shadow-lg transition-transform transform translate-x-full z-20"
-     [ngClass]="{'translate-x-0': isOpen}">
-
-  <button class="text-gray-500 text-2xl mb-10" (click)="closeLogin()">
+<div
+  class="fixed top-0 right-0 h-full bg-white shadow-lg transition-transform transform translate-x-full z-20 w-full sm:w-3/4 md:w-2/5 lg:w-1/3 p-6 sm:p-8 lg:p-10 overflow-y-auto"
+  [ngClass]="{ 'translate-x-0': isOpen }"
+>
+  <!-- Close Button -->
+  <button class="text-gray-500 text-2xl mb-6" (click)="closeLogin()">
     <i class="fa-solid fa-xmark"></i>
   </button>
-  
-  <h1 class="font-semibold text-2xl mb-5">{{ showRegister ? 'Register' : 'Login' }}</h1>
-  
-  <div class="flex items-center space-x-2">
-    <p>or</p>
+
+  <!-- Title -->
+  <h1 class="font-semibold text-2xl mb-6 text-center sm:text-left">
+    {{ showRegister ? "Register" : "Login" }}
+  </h1>
+
+  <!-- Toggle Register/Login -->
+  <div class="flex items-center justify-center sm:justify-start space-x-2 mb-6">
+    <p class="text-gray-600">or</p>
     <button class="text-custom-orange font-semibold" (click)="toggleRegister()">
-      {{ showRegister ? 'Go to Login' : 'Create an account' }}
+      {{ showRegister ? "Go to Login" : "Create an account" }}
     </button>
   </div>
-  
-  <hr class="my-4 border-black w-1/12 border-t-2">
+
+  <!-- Divider -->
+  <hr class="my-4 border-gray-300 w-1/3 sm:w-1/2 mx-auto sm:mx-0" />
 
   <!-- Login Form -->
   <div *ngIf="!showRegister">
-    <input type="text" [(ngModel)]="phone" placeholder="Phone number" class="border w-full p-2 rounded my-4">
-    
-    <input *ngIf="isExistingUser" type="password" [(ngModel)]="password" placeholder="Password" class="border w-full p-2 rounded my-4">
+    <input
+      type="text"
+      [(ngModel)]="phone"
+      placeholder="Phone number"
+      class="border w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-custom-orange"
+    />
 
-    <button (click)="login()" class="bg-custom-orange text-white w-full py-2 rounded my-4">
-      {{ loggedIn ? 'Login' : 'Continue' }}
+    <input
+      *ngIf="isExistingUser"
+      type="password"
+      [(ngModel)]="password"
+      placeholder="Password"
+      class="border w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-custom-orange"
+    />
+
+    <button
+      (click)="login()"
+      class="bg-custom-orange text-white w-full py-3 rounded mb-4 hover:bg-orange-600 transition"
+    >
+      {{ loggedIn ? "Login" : "Continue" }}
     </button>
-    <p class="text-gray-500 text-md font-medium">By clicking on Login, I accept the Terms & Conditions & Privacy Policy</p>
+
+    <p class="text-gray-500 text-sm text-center sm:text-left">
+      By clicking on Login, I accept the Terms & Conditions & Privacy Policy
+    </p>
   </div>
 
   <!-- Registration Form -->
   <div *ngIf="showRegister">
-    <input type="text" [(ngModel)]="phone" placeholder="Phone number" class="border w-full p-2 rounded my-4">
-    <input type="text" [(ngModel)]="name" placeholder="Name" class="border w-full p-2 rounded my-4">
-    <input type="email" [(ngModel)]="email" placeholder="Email" class="border w-full p-2 rounded my-4">
-    <input type="password" [(ngModel)]="password" placeholder="Password" class="border w-full p-2 rounded my-4">
-    <button (click)="createUser()" class="bg-custom-orange text-white w-full py-2 rounded my-4">Register</button>
+    <input
+      type="text"
+      [(ngModel)]="phone"
+      placeholder="Phone number"
+      class="border w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-custom-orange"
+    />
+    <input
+      type="text"
+      [(ngModel)]="name"
+      placeholder="Name"
+      class="border w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-custom-orange"
+    />
+    <input
+      type="email"
+      [(ngModel)]="email"
+      placeholder="Email"
+      class="border w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-custom-orange"
+    />
+    <input
+      type="password"
+      [(ngModel)]="password"
+      placeholder="Password"
+      class="border w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-custom-orange"
+    />
+    <button
+      (click)="createUser()"
+      class="bg-custom-orange text-white w-full py-3 rounded mb-4 hover:bg-orange-600 transition"
+    >
+      Register
+    </button>
   </div>
 </div>
 

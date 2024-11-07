@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 .truncate-username {
-    max-width: 100px; /* Adjust width based on available space */
+    max-width: 100px; 
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

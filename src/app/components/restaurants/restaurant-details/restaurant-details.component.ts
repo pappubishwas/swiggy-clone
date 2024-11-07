@@ -66,12 +66,12 @@ export class RestaurantDetailsComponent implements OnInit {
     );
   
     if (restaurantInCart && this.restaurantItem) {
-      // Ensure each item has quantity set based on localStorage data
+ 
       this.restaurantItem.items = this.restaurantItem.items.map((item) => {
         const cartItem = restaurantInCart.items.find(
           (cartItem: any) => cartItem.itemId === item.itemId
         );
-        const quantity = cartItem ? cartItem.quantity : 0; // Default to 0 if item not in cart
+        const quantity = cartItem ? cartItem.quantity : 0; 
         return { ...item, quantity };
       });
     }
@@ -86,7 +86,6 @@ export class RestaurantDetailsComponent implements OnInit {
     );
 
     if (restaurantInFavorites && this.restaurantItem) {
-      // Ensure each item has isFavorite set based on localStorage data
       this.restaurantItem.items = this.restaurantItem.items.map((item) => {
         const isFavorite = restaurantInFavorites.items.some(
           (favItem: any) => favItem.itemId === item.itemId

@@ -1,62 +1,63 @@
 <app-navbar></app-navbar>
 
-<section class="mt-20 mb-4 flex justify-center items-center">
+<!-- Search Bar Section -->
+<section class="mt-10 sm:mt-20 mb-4 flex justify-center items-center px-4 sm:px-0">
   <div
-    class="w-4/5 bg-white flex justify-between items-center border border-gray-300 rounded-lg px-3 py-4 text-lg mx-auto"
+    class="w-full sm:w-4/5 bg-white flex justify-between items-center border border-gray-300 rounded-lg px-3 py-3 sm:py-4 text-base sm:text-lg mx-auto"
   >
     <input
       type="text"
       placeholder="Search for food or restaurants"
-      class="outline-none mr-2 w-full font-bold"
+      class="outline-none mr-2 w-full font-bold text-sm sm:text-base"
       [(ngModel)]="searchTerm"
     />
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
   </div>
 </section>
 
 <!-- Dynamic Menu Section -->
 <section
-  class="menu-section ml-48 mt-10"
+  class="menu-section px-4 sm:px-12 lg:px-48 mt-10"
   *ngIf="searchTerm && filteredMenus.length > 0"
 >
   <div class="cards flex flex-col space-y-5">
     <div
-      class="card flex gap-5 mr-40 rounded-lg cursor-pointer hover:bg-gray-300"
+      class="card flex flex-col sm:flex-row gap-5 sm:mr-40 rounded-lg cursor-pointer hover:bg-gray-300 p-4 sm:p-5"
       *ngFor="let menu of filteredMenus"
     >
-      <div>
-        <img [src]="menu.src" [alt]="menu.name" class="rounded-lg" />
+      <div class="w-full sm:w-32 lg:w-40 h-32 sm:h-40 flex-shrink-0">
+        <img [src]="menu.src" [alt]="menu.name" class="rounded-lg w-full h-full object-cover" />
       </div>
-      <div class="space-y-5 font-semibold text-2xl py-1">
+      <div class="space-y-3 sm:space-y-5 font-semibold text-lg sm:text-2xl py-2 sm:py-3">
         <h3 class="text-gray-600">{{ menu.name }}</h3>
-        <h5 class="text-gray-500">{{ menu.type }}</h5>
+        <h5 class="text-gray-500 text-sm sm:text-base">{{ menu.type }}</h5>
       </div>
     </div>
   </div>
 </section>
 
-<section class="mx-auto py-10 space-y-3 w-9/12" *ngIf="searchTerm.length <= 0">
+<!-- Popular Cuisines Section -->
+<section class="mx-auto py-5 sm:py-10 space-y-3 w-full sm:w-10/12 lg:w-9/12" *ngIf="searchTerm.length <= 0">
   <!-- Section Title -->
-  <div>
-    <h4 class="font-bold text-3xl ml-5">Popular Cuisines</h4>
+  <div class="px-4 sm:px-0">
+    <h4 class="font-bold text-xl sm:text-2xl lg:text-3xl">Popular Cuisines</h4>
   </div>
 
   <!-- Card Container -->
-  <div class="card-div overflow-hidden w-5/8 mr-20">
+  <div class="card-div overflow-hidden w-full sm:w-10/12 lg:w-5/8 mx-auto">
     <div
-      class="card-list flex transition-transform duration-300 ease-in-out"
-      [ngStyle]="{ transform: 'translateX(' + -currentIndex * 268.5 + 'px)' }"
+      class="card-list flex flex-nowrap transition-transform duration-300 ease-in-out"
+      [ngStyle]="{ transform: 'translateX(' + -currentIndex * 200 + 'px)' }"
     >
-      <div class="menu flex-shrink-0 w-1/12" *ngFor="let item of items">
+      <div class="menu flex-shrink-0 w-1/4 sm:w-1/6 md:w-1/12 p-2" *ngFor="let item of items">
         <button>
           <img
             [src]="item.src"
             [alt]="item.name"
-            class="w-full h-auto rounded-lg"
+            class="w-full h-auto rounded-lg object-cover"
           />
         </button>
       </div>
     </div>
   </div>
 </section>
-

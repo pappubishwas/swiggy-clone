@@ -1,41 +1,45 @@
-<section class="p-6 mx-40 mb-5">
-    <h1 class="text-2xl font-bold mb-4">Cities with Food Delivery</h1>
-    <!-- Cities List Container -->
-    <div class="grid grid-cols-4 gap-4 mb-4 space-x-2 space-y-1">
-        <div *ngFor="let city of displayedCities" class=" text-gray-600 font-bold border rounded-lg text-center px-2 py-2">
-            <ul>
-                <li>Order food Online in {{ city.name }}</li>
-            </ul>
-        </div>
-            <!-- Show More / Show Less Button -->
-    <div class="flex justify-center">
-        <button (click)="toggleShowMore()" class="flex items-center font-bold border rounded-lg text-center py-2 px-10 text-custom-orange">
-          {{ showAll ? 'Show Less' : 'Show More' }}
-          <i class="ml-2" [ngClass]="showAll ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
-        </button>
-      </div>
+<section class="p-4 sm:p-6 mx-4 sm:mx-8 md:mx-20 lg:mx-32 xl:mx-40 mb-5">
+  <h1 class="text-xl sm:text-2xl font-bold mb-4">Cities with Food Delivery</h1>
+  <!-- Cities List Container -->
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-4 mb-4">
+    <div *ngFor="let city of displayedCities" class="text-gray-600 font-bold border rounded-lg text-center px-2 py-2">
+      <ul>
+        <li>Order food Online in {{ city.name }}</li>
+      </ul>
     </div>
-  
-  </section>
+  </div>
 
+  <!-- Show More / Show Less Button -->
+  <div class="flex justify-center">
+    <button
+      (click)="toggleShowMore()"
+      class="flex items-center font-bold border rounded-lg text-center py-2 px-6 sm:px-10 text-custom-orange"
+    >
+      {{ showAll ? 'Show Less' : 'Show More' }}
+      <i class="ml-2" [ngClass]="showAll ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
+    </button>
+  </div>
+</section>
 
-  <section class="p-6 mx-40 mb-5">
-    <h1 class="text-2xl font-bold mb-4">Cities with Groceries Delivery</h1>
-    <!-- Cities List Container -->
-    <div class="grid grid-cols-4 gap-4 mb-4 space-x-2 space-y-1">
-        <div *ngFor="let city of displayedCities" class=" text-gray-600 font-bold border rounded-lg text-center px-2 py-2">
-            <ul>
-                <li>Order Grocery Delivery in {{ city.name }}</li>
-            </ul>
-        </div>
-            <!-- Show More / Show Less Button -->
-    <div class="flex justify-center">
-        <button (click)="toggleShowMore()" class="flex items-center font-bold border rounded-lg text-center py-2 px-10 text-custom-orange">
-          {{ showAll ? 'Show Less' : 'Show More' }}
-          <i class="ml-2" [ngClass]="showAll ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
-        </button>
-      </div>
+<section class="p-4 sm:p-6 mx-4 sm:mx-8 md:mx-20 lg:mx-32 xl:mx-40 mb-5">
+  <h1 class="text-xl sm:text-2xl font-bold mb-4">Cities with Groceries Delivery</h1>
+  <!-- Cities List Container -->
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-4 mb-4">
+    <div *ngFor="let city of displayedCities" class="text-gray-600 font-bold border rounded-lg text-center px-2 py-2">
+      <ul>
+        <li>Order Grocery Delivery in {{ city.name }}</li>
+      </ul>
     </div>
-  
-  </section>
-  
+  </div>
+
+  <!-- Show More / Show Less Button -->
+  <div class="flex justify-center">
+    <button
+      (click)="toggleShowMore()"
+      class="flex items-center font-bold border rounded-lg text-center py-2 px-6 sm:px-10 text-custom-orange"
+    >
+      {{ showAll ? 'Show Less' : 'Show More' }}
+      <i class="ml-2" [ngClass]="showAll ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
+    </button>
+  </div>
+</section>
